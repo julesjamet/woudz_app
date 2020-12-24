@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-    @products = Product.all
+    @pictures = Picture.all
   end
 
   def contact

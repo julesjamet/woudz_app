@@ -19,16 +19,16 @@
     </div>
 
     <div class="sub_container">
-    <% @products.each do |product| %>
-        <%= link_to product_path(product) do %>
+    <% @pictures.each do |picture| %>
+        <%= link_to picture_path(picture) do %>
         <div class="box">
-          <% if product.photo.attached? %>
-            <%= cl_image_tag product.photo.key %>
+          <% if picture.photo.attached? %>
+            <%= cl_image_tag picture.photo.key %>
             <% else %>
-            <p>no product</p>
+            <p>no picture</p>
           <% end %>
-            <h4><%= product.title %></h4>
-            <p><%= product.desc %> </p>
+            <h4><%= picture.title %></h4>
+            <p><%= picture.desc %> </p>
         </div>
       <% end %>
     <% end %>

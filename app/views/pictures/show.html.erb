@@ -1,2 +1,16 @@
-<h1>Pictures#show</h1>
-<p>Find me in app/views/pictures/show.html.erb</p>
+<div class="show_picture"
+     style="max-width: 800px;
+            text-align: center;">
+    <h2><%= @picture.title %></h2>
+    <%= cl_image_tag @picture.photo.key, width: 400 %>
+    <p><%= @picture.desc %></p>
+</div>
+
+<%# Here needs to appear all the products related %>
+<h2>Products</h2>
+<% @products.each do |product| %>
+  <h4><%= @product.title %></h4>
+  <%= cl_image_tag @product.photo.key %>
+  <p><%= @product.desc %></p>
+<% end %>
+<h2>Similar Products</h2>

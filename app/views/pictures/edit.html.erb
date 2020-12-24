@@ -1,0 +1,19 @@
+<%= simple_form_for @picture do |f| %>
+  <%= f.input :title %>
+  <%= f.input :desc %> 
+ <%= f.input :photo, as: :file %>  <!-- [...] -->
+   <%= f.button :submit, "Update", class: 'btn btn-primary'%>
+<% end %>
+
+<% @products.each do |product| %>
+  <h4><%= @product.title %></h4>
+  <%= cl_image_tag @product.photo.key %>
+  <p><%= @product.desc %></p>
+<% end %>
+
+<%= simple_form_for(@picture, @product) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :desc %> 
+ <%= f.input :photo, as: :file %>  <!-- [...] -->
+   <%= f.button :submit, "Create", class: 'btn btn-primary'%>
+<% end %>
