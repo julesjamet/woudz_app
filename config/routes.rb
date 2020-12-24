@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  get 'pages/index'
+  # get 'products/index'
+  # get 'products/new'
+  # get 'products/edit'
+  # get 'products/show'
+  # get 'pages/index'
+
+  resources :products
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
 root to: 'pages#index'

@@ -1,2 +1,36 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+    <div class="border 
+                rounded" 
+         style="margin-top: 30px;">
+        <div style="width: 80px;
+                    text-align: center;
+                    margin-top: 20px;">
+            <div class="border 
+                        rounded-circle" 
+                 style="width: 50px;
+                        height: 50px;
+                        background: url(<%= asset_path 'sample.jpg' %>) center / cover no-repeat;
+                        margin: auto;">
+            </div>
+            <p style="font-size: 12px;
+                      padding-top: 5px;">
+                Tables
+            </p>
+        </div>
+    </div>
+
+    <div class="sub_container">
+    <% @products.each do |product| %>
+        <%= link_to product_path(product) do %>
+        <div class="box">
+          <% if product.photo.attached? %>
+            <%= cl_image_tag product.photo.key %>
+            <% else %>
+            <p>no picture</p>
+          <% end %>
+            <h4><%= product.title %></h4>
+            <p><%= product.desc %> </p>
+        </div>
+      <% end %>
+    <% end %>
+    
+</div>

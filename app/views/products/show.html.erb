@@ -1,0 +1,7 @@
+<div class="show_product"
+     style="max-width: 800px;
+            text-align: center;">
+    <h2><%= @product.title %></h2>
+    <%= cl_image_tag @product.photo.key %>
+    <p><%= @product.desc %></p>
+</div>
