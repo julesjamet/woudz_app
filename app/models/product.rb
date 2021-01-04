@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
-    validates :title, :desc, :photo, presence: true
+    validates :title, presence: true
     has_one_attached :photo
-    belongs_to :picture
+    has_many :cards
+    has_many :pictures, through: :cards
 end

@@ -1,19 +1,11 @@
 <%= simple_form_for @picture do |f| %>
   <%= f.input :title %>
   <%= f.input :desc %> 
- <%= f.input :photo, as: :file %>  <!-- [...] -->
-   <%= f.button :submit, "Update", class: 'btn btn-primary'%>
+  <%= f.input :photo, as: :file %>  <!-- [...] -->
+  <%# <%= f.collection_check_boxes :product_ids, Product.all, :id, :title %>
+  <%= f.association :products,as: :check_boxes, 
+                              collection: Product.all.map { |product| "#{product.id} / #{product.title}" } %>
+    
+  <%= f.button :submit, "Update", class: 'btn btn-primary'%>
 <% end %>
 
-<% @products.each do |product| %>
-  <h4><%= @product.title %></h4>
-  <%= cl_image_tag @product.photo.key %>
-  <p><%= @product.desc %></p>
-<% end %>
-
-<%= simple_form_for(@picture, @product) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :desc %> 
- <%= f.input :photo, as: :file %>  <!-- [...] -->
-   <%= f.button :submit, "Create", class: 'btn btn-primary'%>
-<% end %>

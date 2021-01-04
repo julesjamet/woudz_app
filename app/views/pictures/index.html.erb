@@ -1,0 +1,36 @@
+<h1>Pictures index</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover table-sm">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Desc</th>
+                <th>Related products</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @pictures.each do |pic| %>
+            <tr>
+                <td><%= pic.id %></td>
+                <td><% if pic.photo.attached? %>
+                            <%= cl_image_tag pic.photo.key, width: 100 %>
+                         <% else %>
+                            <p>no picture</p>
+                         <% end %>
+                </td>
+                <td><%= pic.title %></td>
+                <td><%= pic.desc %></td>
+                <td><% pic.products.each do |pro| %>
+                        <p><%= pro.title %></p>
+                    <% end %>
+                </td>
+                <td><%= link_to "edit", edit_picture_path(pic) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>

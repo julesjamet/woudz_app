@@ -1,16 +1,37 @@
-<div class="show_picture"
-     style="max-width: 800px;
-            text-align: center;">
-    <h2><%= @picture.title %></h2>
-    <%= cl_image_tag @picture.photo.key, width: 400 %>
-    <p><%= @picture.desc %></p>
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-12 col-md-6" style="text-align: center;">
+      <% if @picture.photo.attached? %>
+          <div style="background: url(<%= url_for (@picture.photo) %>) center / cover no-repeat;height: 350px;"></div>
+          <%# <%= cl_image_tag @picture.photo.key, width: 400 %>
+      <% else %>
+          <p>no picture</p>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-6">
+        <div style="padding: 20px;">
+            <h4><%= @picture.title %></h4>
+            <p><%= @picture.desc %></p>
+        </div>
+    </div>
+</div>
+<%# Here needs to appear all the products related %>
+
+<h2 style="margin-top: 30px;">Products</h2>
+<div class="sub_container">
+  <% @products.each do |product| %>
+      <%= link_to product_path(product) do %>
+        <div class="box">
+          <% if product.photo.attached? %>
+            <%= cl_image_tag product.photo.key, width: 400 %>
+          <% else %>
+            <p>no product</p>
+          <% end %>
+          <h4><%= product.title %></h4>
+          <p><%= product.desc %> </p>
+        </div>
+      <% end %>
+  <% end %>    
 </div>
 
-<%# Here needs to appear all the products related %>
-<h2>Products</h2>
-<% @products.each do |product| %>
-  <h4><%= @product.title %></h4>
-  <%= cl_image_tag @product.photo.key %>
-  <p><%= @product.desc %></p>
-<% end %>
-<h2>Similar Products</h2>
+

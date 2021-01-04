@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_24_122942) do
+ActiveRecord::Schema.define(version: 2020_12_29_082903) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2020_12_24_122942) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.integer "picture_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["picture_id"], name: "index_cards_on_picture_id"
+    t.index ["product_id"], name: "index_cards_on_product_id"
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.string "title"
     t.text "desc"
@@ -45,10 +54,9 @@ ActiveRecord::Schema.define(version: 2020_12_24_122942) do
     t.text "desc"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "picture_id", null: false
-    t.index ["picture_id"], name: "index_products_on_picture_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "products", "pictures"
+  add_foreign_key "cards", "pictures"
+  add_foreign_key "cards", "products"
 end

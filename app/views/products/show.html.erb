@@ -2,6 +2,6 @@
      style="max-width: 800px;
             text-align: center;">
     <h2><%= @product.title %></h2>
-    <%= cl_image_tag @product.photo.key %>
+    <%= cl_image_tag @product.photo.key, width: 400 %>
     <p><%= @product.desc %></p>
 </div>

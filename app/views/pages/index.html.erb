@@ -18,19 +18,18 @@
         </div>
     </div>
 
-    <div class="sub_container">
-    <% @pictures.each do |picture| %>
-        <%= link_to picture_path(picture) do %>
+<div class="sub_container">
+  <% @pictures.each do |picture| %>
+      <%= link_to picture_path(picture) do %>
         <div class="box">
           <% if picture.photo.attached? %>
             <%= cl_image_tag picture.photo.key %>
-            <% else %>
+          <% else %>
             <p>no picture</p>
           <% end %>
-            <h4><%= picture.title %></h4>
-            <p><%= picture.desc %> </p>
+          <h4><%= picture.title %></h4>
+          <p><%= picture.desc %> </p>
         </div>
       <% end %>
-    <% end %>
-    
+  <% end %>    
 </div>
